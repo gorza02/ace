@@ -1,0 +1,259 @@
+chmod 0777 /sys/class/thermal/thermal_message/sconfig
+echo '10' > /sys/class/thermal/thermal_message/sconfig
+chmod 0777 /sys/devices/system/cpu/cpu*/core_ctl/offline_delay_ms
+echo '0' > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
+echo '0' > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
+echo '0' > /sys/devices/system/cpu/cpu7/core_ctl/offline_delay_ms
+echo performance > /sys/kernel/gpu/gpu_governor
+chmod 0444 /sys/class/thermal/thermal_message/sconfig
+chmod 0777 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+echo 'performance' > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+chmod 0444 /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+chmod 0777 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+echo 'performance' > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+chmod 0444 /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
+chmod 0777 /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+echo 'performance' > /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+chmod 0444 /sys/devices/system/cpu/cpufreq/policy7/scaling_governor
+chmod 0777 /sys/class/power_supply/battery/constant_charge_current_max
+echo 5000000 > /sys/class/power_supply/battery/constant_charge_current_max
+chmod 0444 /sys/class/power_supply/battery/constant_charge_current_max
+chmod 0755 /sys/class/power_supply/battery/input_current_limited
+echo 0 > /sys/class/power_supply/battery/input_current_limited
+chmod 0644 /sys/class/power_supply/battery/input_current_limited
+chmod 0755 /sys/class/power_supply/battery/step_charging_enabled
+echo 1 > /sys/class/power_supply/battery/step_charging_enabled
+chmod 0644 /sys/class/power_supply/battery/step_charging_enabled
+chmod 0755 /sys/class/power_supply/battery/sw_jeita_enabled
+echo 1 > /sys/class/power_supply/battery/sw_jeita_enabled
+chmod 0644 /sys/class/power_supply/battery/sw_jeita_enabled
+chmod 0755 /sys/class/power_supply/battery/battery_charging_enabled
+echo 1 > /sys/class/power_supply/battery/battery_charging_enabled
+chmod 0644 /sys/class/power_supply/battery/battery_charging_enabled
+chmod 0755 /sys/class/power_supply/battery/subsystem/usb/pd_active
+echo 0 > /sys/class/power_supply/battery/subsystem/usb/pd_active
+chmod 0644 /sys/class/power_supply/battery/subsystem/usb/pd_active
+chmod 0755 /sys/class/power_supply/battery/charger_temp
+echo 470 > /sys/class/power_supply/battery/charger_temp
+chmod 0644 /sys/class/power_supply/battery/charger_temp
+chmod 0755 /sys/class/qcom-battery/restrict_chg
+echo 0 > /sys/class/qcom-battery/restrict_chg
+chmod 0644 /sys/class/qcom-battery/restrict_chg
+echo Y > /sys/module/lpm_levels/parameters/sleep_disabled
+echo N > /sys/module/sync/parameters/fsync_enabled
+echo 0 > /sys/block/sda/queue/iosched/low_latency
+echo 8192 > /sys/block/sda/queue/read_ahead_kb
+echo 0 > /sys/block/sdb/queue/iosched/low_latency
+echo 0 > /sys/block/sdc/queue/iosched/low_latency
+echo 0 > /sys/block/sdd/queue/iosched/low_latency
+echo 40 > /proc/sys/vm/dirty_ratio
+mkdir /data/adb/modules/GT_STABLE/common
+mkdir /data/adb/modules/GT_STABLE/common/unityfiles
+pm disable com.samsung.android.game.gos >/dev/null 2>&1
+pm uninstall --user 0 com.miui.daemon >/dev/null 2>&1
+pm uninstall --user 0 com.xiaomi.joyose >/dev/null 2>&1
+
+[[ -e "/proc/sys/kernel/sched_lib_mask_force" ]] && [[ -e "/proc/sys/kernel/sched_lib_name" ]] && {
+	echo "com.miHoYo.,com.tencent.,com.ngame.,com.pubg.,com.ea.gp.,com.netease.,com.riotgames.,com.ea.game.,UnityMain,libunity.so" >"/proc/sys/kernel/sched_lib_name"
+	echo "255" >"/proc/sys/kernel/sched_lib_mask_force"
+}
+MODDIR=${0%/*}
+chmod 777 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo  "performance" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+chmod 777 /sys/devices/system/cpu/cpufreq/performance/go_hispeed_load
+echo "75" > /sys/devices/system/cpu/cpufreq/performance/go_hispeed_load
+chmod 777 /sys/devices/system/cpu/cpufreq/performance/above_hispeed_delay
+echo "0" > /sys/devices/system/cpu/cpufreq/performance/above_hispeed_delay
+chmod 777 /sys/devices/system/cpu/cpufreq/performance/boost
+echo "1" > /sys/devices/system/cpu/cpufreq/performance/boost
+chmod 777 /sys/module/msm_performance/parameters/touchboost
+echo "1" > /sys/module/msm_performance/parameters/touchboost
+chmod 777 /sys/devices/system/cpu/cpufreq/performance/max_freq_hysteresis
+echo "1" > /sys/devices/system/cpu/cpufreq/performance/max_freq_hysteresis
+chmod 777 /sys/devices/system/cpu/cpufreq/performance/align_windows 
+chmod 777 /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor
+chmod 777 /sys/class/kgsl/kgsl-3d0/devfreq/governor
+chmod 777 /sys/module/adreno_idler/parameters/adreno_idler_active
+chmod 777 /sys/module/lazyplug/parameters/nr_possible_cores
+settings put system min_refresh_rate 120 2>/dev/null
+settings put system peak_refresh_rate 120 2>/dev/null
+settings put system user_refresh_rate 120 2>/dev/null
+settings put system thermal_limit_refresh_rate 120 2>/dev/null
+settings put global oneplus_screen_refresh_rate 0 2>/dev/null
+settings put secure coloros_screen_refresh_rate 3 2>/dev/null
+sed -i 's/debug.hwui.renderer.*/debug.hwui.renderer=skiavk/' "$MODDIR/system.prop"
+
+echo '1' > /sys/devices/system/cpu/cpufreq/performance/align_windows 1
+echo 'performance' > /sys/devices/soc/1c00000.qcom,kgsl-3d0/devfreq/1c00000.qcom,kgsl-3d0/governor
+echo 'msm-adreno-tz' > /sys/class/kgsl/kgsl-3d0/devfreq/governor 
+echo '0' > /sys/module/adreno_idler/parameters/adreno_idler_active
+echo '8' > /sys/module/lazyplug/parameters/nr_possible_cores
+chmod 777 /dev/cpuset/*/cpus
+chmod 777 /dev/cpuset/*/boost/cpus
+echo '0-7' > /dev/cpuset/foreground/cpus
+echo '0-7' > /dev/cpuset/foreground/boost/cpus
+echo '0-7' > /dev/cpuset/top-app/cpus
+echo '0-7' > /dev/cpuset/top-app/boost/cpus
+echo '0-7' > /dev/cpuset/background/cpus
+echo '0-7' > /dev/cpuset/background/boost/cpus
+echo '0-7' > /dev/cpuset/top-app/cpus
+echo '0-7' > /dev/cpuset/background/cpus
+setprop ro.vendor.qti.config.zram true
+swapon /dev/block/vnswap0
+swapon /dev/block/zram0
+swapon /dev/block/vbswap0
+echo "1" > /sys/block/vnswap0/reset
+echo "8589934592" > /sys/block/vnswap0/disksize
+echo "8192M" > /sys/block/vnswap0/mem_limit
+echo "8" > /sys/block/vnswap0/max_comp_streams
+mkswap /dev/block/vnswap0
+swapon /dev/block/vnswap0 -p 32758
+echo "100" > /proc/sys/vm/swappiness
+echo "15" > /proc/sys/vm/dirty_background_ratio
+echo "200" > /proc/sys/vm/vfs_cache_pressure
+echo "3000" > /proc/sys/vm/dirty_writeback_centisecs
+echo '3' > /proc/sys/vm/drop_caches
+echo '0' > /proc/sys/vm/oom_kill_allocating_task
+echo "256,10240,32000,34000,36000,38000" > /sys/module/lowmemorykiller/parameters/minfree
+cat /sys/module/lowmemorykiller/parameters/minfree
+
+# Add ZRAM FOR ZRAM0
+
+echo "1" > /sys/block/zram0/reset
+echo "8589934592" > /sys/block/zram0/disksize
+echo "8192M" > /sys/block/zram0/mem_limit
+echo "8" > /sys/block/zram0/max_comp_streams
+mkswap /dev/block/zram0
+swapon /dev/block/zram0 -p 32758
+echo "100" > /proc/sys/vm/swappiness
+echo "15" > /proc/sys/vm/dirty_background_ratio
+echo "200" > /proc/sys/vm/vfs_cache_pressure
+echo "3000" > /proc/sys/vm/dirty_writeback_centisecs
+echo '3' > /proc/sys/vm/drop_caches
+echo '0' > /proc/sys/vm/oom_kill_allocating_task
+echo "256,10240,32000,34000,36000,38000" > /sys/module/lowmemorykiller/parameters/minfree
+cat /sys/module/lowmemorykiller/parameters/minfree
+#NetSpeed
+
+echo "0" > /proc/sys/net/ipv4/tcp_timestamps;
+echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse;
+echo "1" > /proc/sys/net/ipv4/tcp_sack;
+echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle;
+echo "1" > /proc/sys/net/ipv4/tcp_window_scaling;
+echo "5" > /proc/sys/net/ipv4/tcp_keepalive_probes;
+echo "30" > /proc/sys/net/ipv4/tcp_keepalive_intvl;
+echo "30" > /proc/sys/net/ipv4/tcp_fin_timeout;
+echo "404480" > /proc/sys/net/core/wmem_max;
+echo "404480" > /proc/sys/net/core/rmem_max;
+echo "256960" > /proc/sys/net/core/rmem_default;
+echo "256960" > /proc/sys/net/core/wmem_default;
+echo "4096,16384,404480" > /proc/sys/net/ipv4/tcp_wmem;
+echo "4096,87380,404480" > /proc/sys/net/ipv4/tcp_rmem; 
+
+
+# Add ZRAM FOR VBSWAP
+
+echo "1" > /sys/block/vbswap0/reset
+echo "8589934592" > /sys/block/vbswap0/disksize
+echo "8192M" > /sys/block/vbswap0/mem_limit
+echo "8" > /sys/block/vbswap0/max_comp_streams
+mkswap /dev/block/vbswap0
+swapon /dev/block/vbswap0 -p 32758
+echo "100" > /proc/sys/vm/swappiness
+echo "15" > /proc/sys/vm/dirty_background_ratio
+echo "200" > /proc/sys/vm/vfs_cache_pressure
+echo "3000" > /proc/sys/vm/dirty_writeback_centisecs
+echo '3' > /proc/sys/vm/drop_caches
+echo '0' > /proc/sys/vm/oom_kill_allocating_task
+echo "256,10240,32000,34000,36000,38000" > /sys/module/lowmemorykiller/parameters/minfree
+cat /sys/module/lowmemorykiller/parameters/minfree
+swapon /dev/block/vnswap0 -p 32758
+swapon /dev/block/zram0 -p 32758
+swapon /dev/block/vbswap0 -p 32758​
+echo '0' > /proc/sys/vm/page-cluster 0
+echo 4 > /sys/block/zram0/max_comp_streams 4
+modpath="/data/adb/modules/API_TECH/"
+sh "${modpath}common/unityfiles/addon.sh"
+sh "${modpath}common/unityfiles/util_functions.sh"
+sqlite_log="/sdcard/API_log"
+
+[[ ! -e "$sqlite_log" ]] && touch "$sqlite_log"
+
+[[ "$(command -v sqlite3)" ]] && [[ ! -f "$(pwd)/sqlite3_opt_done" ]] && {
+	for i in $(find / -iname *.db); do
+		sqlite3 "$i" 'VACUUM;'
+
+		resVac=$?
+
+		[[ "$resVac" == "0" ]] && resVac="SUCCESS" || resVac="FAILED(ERRCODE)-$resVac"
+
+		sqlite3 "$i" 'REINDEX;'
+
+		resIndex=$?
+
+		[[ "$resIndex" == "0" ]] && resIndex="SUCCESS" || resIndex="FAILED(ERRCODE)-$resIndex"
+
+		sqlite3 "$i" 'ANALYZE;'
+
+		resAnlz=$?
+
+		[[ "$resAnlz" == "0" ]] && resAnlz="SUCCESS" || resAnlz="FAILED(ERRCODE)-$resAnlz"
+
+		echo "Database $i: VACUUM=$resVac REINDEX=$resIndex ANALYZE=$resAnlz" >>"$sqlite_log"
+		echo "Done!" >"$(pwd)/sqlite3_opt_done"
+	done
+} || [[ ! "$(command -v sqlite3)" ]] && echo "[!] Install aql" >"$sqlite_log"
+
+cmd package uninstall --user 0 com.xiaomi.joyose
+
+#!/system/bin/sh
+#sleep 25
+maybe_set_prop() {
+    local prop="$1"
+    local contains="$2"
+    local value="$3"
+
+    if [[ "$(getprop "$prop")" == *"$contains"* ]]; then
+        resetprop "$prop" "$value"
+    fi
+}
+
+# Magisk recovery mode
+maybe_set_prop ro.bootmode recovery unknown
+maybe_set_prop ro.boot.mode recovery unknown
+maybe_set_prop vendor.boot.mode recovery unknown
+
+# MIUI cross-region flash
+maybe_set_prop ro.boot.hwc CN GLOBAL
+maybe_set_prop ro.boot.hwcountry China GLOBAL
+
+resetprop --delete ro.build.selinux
+
+# SELinux permissive
+if [[ "$(cat /sys/fs/selinux/enforce)" == "0" ]]; then
+    chmod 640 /sys/fs/selinux/enforce
+    chmod 440 /sys/fs/selinux/policy
+fi
+
+# Late props which must be set after boot_completed
+{
+    until [[ "$(getprop sys.boot_completed)" == "1" ]]; do
+        sleep 1
+    done
+
+    # avoid breaking Realme fingerprint scanners
+    resetprop ro.boot.flash.locked 1
+
+    # avoid breaking Oppo fingerprint scanners
+    resetprop ro.boot.vbmeta.device_state locked
+
+    # avoid breaking OnePlus display modes/fingerprint scanners
+    resetprop vendor.boot.verifiedbootstate green
+}
+# Wait to boot be completed
+until [[ "$(getprop sys.boot_completed)" -eq "1" ]] || [[ "$(getprop dev.bootcomplete)" -eq "1" ]]; do
+	sleep 1
+
+done
+
+

@@ -1,0 +1,4 @@
+su -c API_dex
+su -c API_L
+su -c API_clean
+su -c API_tuner
